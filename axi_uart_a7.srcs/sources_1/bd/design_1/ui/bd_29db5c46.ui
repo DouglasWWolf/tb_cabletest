@@ -1,0 +1,81 @@
+{
+   "ActiveEmotionalView":"No Loops",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-439,-164",
+   "DisplayTieOff":"1",
+   "ExpandedHierarchyInLayout":"",
+   "No Loops_ExpandedHierarchyInLayout":"",
+   "No Loops_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port AXIS_OUT -pg 1 -lvl 3 -x 660 -y 60 -defaultsOSRD
+preplace port AXIS_IN -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port port-id_resetn -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace port port-id_packet_sent -pg 1 -lvl 3 -x 660 -y 100 -defaultsOSRD
+preplace port port-id_busy -pg 1 -lvl 3 -x 660 -y 80 -defaultsOSRD
+preplace port port-id_sim_err -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace port port-id_start -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace port port-id_error -pg 1 -lvl 3 -x 660 -y 440 -defaultsOSRD
+preplace port port-id_packet_rcvd -pg 1 -lvl 3 -x 660 -y 420 -defaultsOSRD
+preplace portBus PACKET_COUNT -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace portBus CYCLES_PER_PACKET -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace inst axis_data_fifo -pg 1 -lvl 2 -x 530 -y 160 -defaultsOSRD -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir M_AXIS left -pinY M_AXIS 160L -pinDir s_axis_aresetn left -pinY s_axis_aresetn 180L -pinDir s_axis_aclk left -pinY s_axis_aclk 200L
+preplace inst receiver -pg 1 -lvl 1 -x 220 -y 320 -defaultsOSRD -pinDir AXIS_FIFO right -pinY AXIS_FIFO 0R -pinDir AXIS_IN left -pinY AXIS_IN 0L -pinDir clk left -pinY clk 20L -pinDir resetn left -pinY resetn 40L -pinDir packet_rcvd right -pinY packet_rcvd 100R -pinDir error right -pinY error 120R
+preplace inst packet_generator -pg 1 -lvl 1 -x 220 -y 60 -swap {6 1 2 3 4 5 0 7 8 9 10 11 12 17 13 14 16 15 18 19 20} -defaultsOSRD -pinDir AXIS_FIFO right -pinY AXIS_FIFO 100R -pinDir AXIS_OUT right -pinY AXIS_OUT 0R -pinDir clk left -pinY clk 60L -pinDir resetn left -pinY resetn 160L -pinBusDir CYCLES_PER_PACKET left -pinBusY CYCLES_PER_PACKET 80L -pinBusDir PACKET_COUNT left -pinBusY PACKET_COUNT 100L -pinDir start left -pinY start 140L -pinDir sim_err left -pinY sim_err 120L -pinDir busy right -pinY busy 120R -pinDir packet_sent right -pinY packet_sent 140R -pinDir resetn_fifo right -pinY resetn_fifo 160R
+preplace netloc CYCLES_PER_PACKET_1 1 0 1 NJ 140
+preplace netloc PACKET_COUNT_1 1 0 1 NJ 160
+preplace netloc clk_1 1 0 2 40 500 420
+preplace netloc packet_gen_0_busy 1 1 2 400J 80 N
+preplace netloc packet_gen_0_packet_sent 1 1 2 420J 100 N
+preplace netloc packet_gen_0_resetn_fifo 1 1 1 400 220n
+preplace netloc receiver_0_error 1 1 2 NJ 440 N
+preplace netloc receiver_0_packet_rcvd 1 1 2 NJ 420 N
+preplace netloc resetn_1 1 0 1 20J 220n
+preplace netloc sim_err_1 1 0 1 NJ 180
+preplace netloc start_1 1 0 1 NJ 200
+preplace netloc Conn1 1 0 1 NJ 320
+preplace netloc Conn2 1 1 2 NJ 60 N
+preplace netloc axis_data_fifo_0_M_AXIS 1 1 1 N 320
+preplace netloc packet_gen_0_AXIS_FIFO 1 1 1 N 160
+levelinfo -pg 1 0 220 530 660
+pagesize -pg 1 -db -bbox -sgen -240 0 800 510
+",
+   "No Loops_ScaleFactor":"1.0",
+   "No Loops_TopLeft":"-454,-144",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port AXIS_OUT -pg 1 -lvl 3 -x 690 -y 160 -defaultsOSRD
+preplace port AXIS_IN -pg 1 -lvl 0 -x 0 -y 370 -defaultsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace port port-id_resetn -pg 1 -lvl 0 -x 0 -y 390 -defaultsOSRD
+preplace port port-id_packet_sent -pg 1 -lvl 3 -x 690 -y 200 -defaultsOSRD
+preplace port port-id_busy -pg 1 -lvl 3 -x 690 -y 180 -defaultsOSRD
+preplace port port-id_sim_err -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
+preplace port port-id_start -pg 1 -lvl 0 -x 0 -y 210 -defaultsOSRD
+preplace port port-id_error -pg 1 -lvl 3 -x 690 -y 390 -defaultsOSRD
+preplace port port-id_packet_rcvd -pg 1 -lvl 3 -x 690 -y 370 -defaultsOSRD
+preplace portBus PACKET_COUNT -pg 1 -lvl 0 -x 0 -y 190 -defaultsOSRD
+preplace portBus CYCLES_PER_PACKET -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD
+preplace inst packet_generator -pg 1 -lvl 2 -x 490 -y 180 -defaultsOSRD
+preplace inst axis_data_fifo -pg 1 -lvl 1 -x 160 -y 90 -defaultsOSRD
+preplace inst receiver -pg 1 -lvl 2 -x 490 -y 380 -defaultsOSRD
+preplace netloc clk_1 1 0 2 30 170 300
+preplace netloc resetn_1 1 0 2 NJ 390 290
+preplace netloc PACKET_COUNT_1 1 0 2 NJ 190 NJ
+preplace netloc CYCLES_PER_PACKET_1 1 0 2 20J 180 310J
+preplace netloc packet_gen_0_packet_sent 1 2 1 NJ 200
+preplace netloc packet_gen_0_busy 1 2 1 NJ 180
+preplace netloc sim_err_1 1 0 2 NJ 230 NJ
+preplace netloc start_1 1 0 2 NJ 210 NJ
+preplace netloc packet_gen_0_resetn_fifo 1 0 3 40 290 NJ 290 670
+preplace netloc receiver_0_error 1 2 1 NJ 390
+preplace netloc receiver_0_packet_rcvd 1 2 1 NJ 370
+preplace netloc Conn2 1 2 1 NJ 160
+preplace netloc packet_gen_0_AXIS_FIFO 1 0 3 40 10 NJ 10 670
+preplace netloc axis_data_fifo_0_M_AXIS 1 1 1 280 90n
+preplace netloc Conn1 1 0 2 NJ 370 NJ
+levelinfo -pg 1 0 160 490 690
+pagesize -pg 1 -db -bbox -sgen -240 0 830 470
+"
+}
+0
