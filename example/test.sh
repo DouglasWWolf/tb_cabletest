@@ -25,6 +25,12 @@ rcvd_sequence=0;
 printf "%15i total packets in task\n" $xfer_packets
 while [ $percent -ne 100 ]; do
     
+    if [ $(is_halted) -eq 3 ] ; then
+        echo 
+        echo "Halted by user" 1>&2
+        exit 1
+    fi
+
     # Find out how many packets we've received
     packets_rcvd=$(get_packets_rcvd)
 

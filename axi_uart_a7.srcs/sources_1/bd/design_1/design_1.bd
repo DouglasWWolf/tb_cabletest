@@ -23,13 +23,13 @@
       "cabletest": {
         "channel_1": {
           "axis_data_fifo": "",
-          "receiver": "",
-          "packet_generator": ""
+          "packet_generator": "",
+          "receiver": ""
         },
         "channel_2": {
           "axis_data_fifo": "",
-          "receiver": "",
-          "packet_generator": ""
+          "packet_generator": "",
+          "receiver": ""
         },
         "cabletest_ctl": ""
       },
@@ -1024,23 +1024,20 @@
                 "left": "7",
                 "right": "0"
               },
-              "packet_sent": {
-                "direction": "O"
+              "pg_control": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
               },
-              "busy": {
-                "direction": "O"
+              "pg_status": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
               },
-              "sim_err": {
-                "direction": "I"
-              },
-              "start": {
-                "direction": "I"
-              },
-              "error": {
-                "direction": "O"
-              },
-              "packet_rcvd": {
-                "direction": "O"
+              "pr_status": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
               }
             },
             "components": {
@@ -1049,217 +1046,6 @@
                 "xci_name": "design_1_axis_data_fifo_0_0",
                 "xci_path": "ip/design_1_axis_data_fifo_0_0/design_1_axis_data_fifo_0_0.xci",
                 "inst_hier_path": "cabletest/channel_1/axis_data_fifo"
-              },
-              "receiver": {
-                "vlnv": "xilinx.com:module_ref:receiver:1.0",
-                "xci_name": "design_1_receiver_0_0",
-                "xci_path": "ip/design_1_receiver_0_0/design_1_receiver_0_0.xci",
-                "inst_hier_path": "cabletest/channel_1/receiver",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "receiver",
-                  "boundary_crc": "0x0"
-                },
-                "interface_ports": {
-                  "AXIS_FIFO": {
-                    "mode": "Slave",
-                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
-                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
-                    "parameters": {
-                      "TDATA_NUM_BYTES": {
-                        "value": "64",
-                        "value_src": "constant"
-                      },
-                      "TDEST_WIDTH": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "TID_WIDTH": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "TUSER_WIDTH": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "HAS_TREADY": {
-                        "value": "1",
-                        "value_src": "constant"
-                      },
-                      "HAS_TSTRB": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "HAS_TKEEP": {
-                        "value": "1",
-                        "value_src": "constant"
-                      },
-                      "HAS_TLAST": {
-                        "value": "1",
-                        "value_src": "constant"
-                      },
-                      "FREQ_HZ": {
-                        "value": "50000000",
-                        "value_src": "ip_prop"
-                      },
-                      "PHASE": {
-                        "value": "0.0",
-                        "value_src": "ip_prop"
-                      },
-                      "CLK_DOMAIN": {
-                        "value": "/system_clock_clk_out1",
-                        "value_src": "ip_prop"
-                      }
-                    },
-                    "port_maps": {
-                      "TDATA": {
-                        "physical_name": "AXIS_FIFO_TDATA",
-                        "direction": "I",
-                        "left": "511",
-                        "right": "0"
-                      },
-                      "TKEEP": {
-                        "physical_name": "AXIS_FIFO_TKEEP",
-                        "direction": "I",
-                        "left": "63",
-                        "right": "0"
-                      },
-                      "TLAST": {
-                        "physical_name": "AXIS_FIFO_TLAST",
-                        "direction": "I"
-                      },
-                      "TVALID": {
-                        "physical_name": "AXIS_FIFO_TVALID",
-                        "direction": "I"
-                      },
-                      "TREADY": {
-                        "physical_name": "AXIS_FIFO_TREADY",
-                        "direction": "O"
-                      }
-                    }
-                  },
-                  "AXIS_IN": {
-                    "mode": "Slave",
-                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
-                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
-                    "parameters": {
-                      "TDATA_NUM_BYTES": {
-                        "value": "64",
-                        "value_src": "constant"
-                      },
-                      "TDEST_WIDTH": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "TID_WIDTH": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "TUSER_WIDTH": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "HAS_TREADY": {
-                        "value": "1",
-                        "value_src": "constant"
-                      },
-                      "HAS_TSTRB": {
-                        "value": "0",
-                        "value_src": "constant"
-                      },
-                      "HAS_TKEEP": {
-                        "value": "1",
-                        "value_src": "constant"
-                      },
-                      "HAS_TLAST": {
-                        "value": "1",
-                        "value_src": "constant"
-                      },
-                      "FREQ_HZ": {
-                        "value": "50000000",
-                        "value_src": "ip_prop"
-                      },
-                      "PHASE": {
-                        "value": "0.0",
-                        "value_src": "ip_prop"
-                      },
-                      "CLK_DOMAIN": {
-                        "value": "/system_clock_clk_out1",
-                        "value_src": "ip_prop"
-                      }
-                    },
-                    "port_maps": {
-                      "TDATA": {
-                        "physical_name": "AXIS_IN_TDATA",
-                        "direction": "I",
-                        "left": "511",
-                        "right": "0"
-                      },
-                      "TKEEP": {
-                        "physical_name": "AXIS_IN_TKEEP",
-                        "direction": "I",
-                        "left": "63",
-                        "right": "0"
-                      },
-                      "TLAST": {
-                        "physical_name": "AXIS_IN_TLAST",
-                        "direction": "I"
-                      },
-                      "TVALID": {
-                        "physical_name": "AXIS_IN_TVALID",
-                        "direction": "I"
-                      },
-                      "TREADY": {
-                        "physical_name": "AXIS_IN_TREADY",
-                        "direction": "O"
-                      }
-                    }
-                  }
-                },
-                "ports": {
-                  "clk": {
-                    "type": "clk",
-                    "direction": "I",
-                    "parameters": {
-                      "ASSOCIATED_BUSIF": {
-                        "value": "AXIS_FIFO:AXIS_IN",
-                        "value_src": "constant"
-                      },
-                      "ASSOCIATED_RESET": {
-                        "value": "resetn",
-                        "value_src": "constant"
-                      },
-                      "FREQ_HZ": {
-                        "value": "50000000",
-                        "value_src": "ip_prop"
-                      },
-                      "PHASE": {
-                        "value": "0.0",
-                        "value_src": "ip_prop"
-                      },
-                      "CLK_DOMAIN": {
-                        "value": "/system_clock_clk_out1",
-                        "value_src": "ip_prop"
-                      }
-                    }
-                  },
-                  "resetn": {
-                    "type": "rst",
-                    "direction": "I",
-                    "parameters": {
-                      "POLARITY": {
-                        "value": "ACTIVE_LOW",
-                        "value_src": "constant"
-                      }
-                    }
-                  },
-                  "packet_rcvd": {
-                    "direction": "O"
-                  },
-                  "error": {
-                    "direction": "O"
-                  }
-                }
               },
               "packet_generator": {
                 "vlnv": "xilinx.com:module_ref:packet_gen:1.0",
@@ -1464,185 +1250,26 @@
                     "left": "63",
                     "right": "0"
                   },
-                  "start": {
-                    "direction": "I"
+                  "control": {
+                    "direction": "I",
+                    "left": "2",
+                    "right": "0"
                   },
-                  "sim_err": {
-                    "direction": "I"
-                  },
-                  "busy": {
-                    "direction": "O"
-                  },
-                  "packet_sent": {
-                    "direction": "O"
+                  "status": {
+                    "direction": "O",
+                    "left": "2",
+                    "right": "0"
                   },
                   "resetn_fifo": {
                     "direction": "O"
                   }
                 }
-              }
-            },
-            "interface_nets": {
-              "Conn1": {
-                "interface_ports": [
-                  "AXIS_IN",
-                  "receiver/AXIS_IN"
-                ]
-              },
-              "Conn2": {
-                "interface_ports": [
-                  "AXIS_OUT",
-                  "packet_generator/AXIS_OUT"
-                ]
-              },
-              "axis_data_fifo_0_M_AXIS": {
-                "interface_ports": [
-                  "axis_data_fifo/M_AXIS",
-                  "receiver/AXIS_FIFO"
-                ]
-              },
-              "packet_gen_0_AXIS_FIFO": {
-                "interface_ports": [
-                  "packet_generator/AXIS_FIFO",
-                  "axis_data_fifo/S_AXIS"
-                ]
-              }
-            },
-            "nets": {
-              "CYCLES_PER_PACKET_1": {
-                "ports": [
-                  "CYCLES_PER_PACKET",
-                  "packet_generator/CYCLES_PER_PACKET"
-                ]
-              },
-              "PACKET_COUNT_1": {
-                "ports": [
-                  "PACKET_COUNT",
-                  "packet_generator/PACKET_COUNT"
-                ]
-              },
-              "clk_1": {
-                "ports": [
-                  "clk",
-                  "axis_data_fifo/s_axis_aclk",
-                  "receiver/clk",
-                  "packet_generator/clk"
-                ]
-              },
-              "packet_gen_0_busy": {
-                "ports": [
-                  "packet_generator/busy",
-                  "busy"
-                ]
-              },
-              "packet_gen_0_packet_sent": {
-                "ports": [
-                  "packet_generator/packet_sent",
-                  "packet_sent"
-                ]
-              },
-              "packet_gen_0_resetn_fifo": {
-                "ports": [
-                  "packet_generator/resetn_fifo",
-                  "axis_data_fifo/s_axis_aresetn"
-                ]
-              },
-              "receiver_0_error": {
-                "ports": [
-                  "receiver/error",
-                  "error"
-                ]
-              },
-              "receiver_0_packet_rcvd": {
-                "ports": [
-                  "receiver/packet_rcvd",
-                  "packet_rcvd"
-                ]
-              },
-              "resetn_1": {
-                "ports": [
-                  "resetn",
-                  "receiver/resetn",
-                  "packet_generator/resetn"
-                ]
-              },
-              "sim_err_1": {
-                "ports": [
-                  "sim_err",
-                  "packet_generator/sim_err"
-                ]
-              },
-              "start_1": {
-                "ports": [
-                  "start",
-                  "packet_generator/start"
-                ]
-              }
-            }
-          },
-          "channel_2": {
-            "interface_ports": {
-              "AXIS_OUT": {
-                "mode": "Master",
-                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
-                "vlnv": "xilinx.com:interface:axis_rtl:1.0"
-              },
-              "AXIS_IN": {
-                "mode": "Slave",
-                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
-                "vlnv": "xilinx.com:interface:axis_rtl:1.0"
-              }
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I"
-              },
-              "resetn": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "PACKET_COUNT": {
-                "direction": "I",
-                "left": "63",
-                "right": "0"
-              },
-              "CYCLES_PER_PACKET": {
-                "direction": "I",
-                "left": "7",
-                "right": "0"
-              },
-              "packet_sent": {
-                "direction": "O"
-              },
-              "busy": {
-                "direction": "O"
-              },
-              "sim_err": {
-                "direction": "I"
-              },
-              "start": {
-                "direction": "I"
-              },
-              "error": {
-                "direction": "O"
-              },
-              "packet_rcvd": {
-                "direction": "O"
-              }
-            },
-            "components": {
-              "axis_data_fifo": {
-                "vlnv": "xilinx.com:ip:axis_data_fifo:2.0",
-                "xci_name": "design_1_axis_data_fifo_1",
-                "xci_path": "ip/design_1_axis_data_fifo_1/design_1_axis_data_fifo_1.xci",
-                "inst_hier_path": "cabletest/channel_2/axis_data_fifo"
               },
               "receiver": {
                 "vlnv": "xilinx.com:module_ref:receiver:1.0",
-                "xci_name": "design_1_receiver_1",
-                "xci_path": "ip/design_1_receiver_1/design_1_receiver_1.xci",
-                "inst_hier_path": "cabletest/channel_2/receiver",
+                "xci_name": "design_1_receiver_0_0",
+                "xci_path": "ip/design_1_receiver_0_0/design_1_receiver_0_0.xci",
+                "inst_hier_path": "cabletest/channel_1/receiver",
                 "reference_info": {
                   "ref_type": "hdl",
                   "ref_name": "receiver",
@@ -1841,13 +1468,148 @@
                       }
                     }
                   },
-                  "packet_rcvd": {
-                    "direction": "O"
-                  },
-                  "error": {
-                    "direction": "O"
+                  "status": {
+                    "direction": "O",
+                    "left": "1",
+                    "right": "0"
                   }
                 }
+              }
+            },
+            "interface_nets": {
+              "Conn1": {
+                "interface_ports": [
+                  "AXIS_IN",
+                  "receiver/AXIS_IN"
+                ]
+              },
+              "Conn2": {
+                "interface_ports": [
+                  "AXIS_OUT",
+                  "packet_generator/AXIS_OUT"
+                ]
+              },
+              "axis_data_fifo_0_M_AXIS": {
+                "interface_ports": [
+                  "axis_data_fifo/M_AXIS",
+                  "receiver/AXIS_FIFO"
+                ]
+              },
+              "packet_gen_0_AXIS_FIFO": {
+                "interface_ports": [
+                  "packet_generator/AXIS_FIFO",
+                  "axis_data_fifo/S_AXIS"
+                ]
+              }
+            },
+            "nets": {
+              "CYCLES_PER_PACKET_1": {
+                "ports": [
+                  "CYCLES_PER_PACKET",
+                  "packet_generator/CYCLES_PER_PACKET"
+                ]
+              },
+              "PACKET_COUNT_1": {
+                "ports": [
+                  "PACKET_COUNT",
+                  "packet_generator/PACKET_COUNT"
+                ]
+              },
+              "clk_1": {
+                "ports": [
+                  "clk",
+                  "axis_data_fifo/s_axis_aclk",
+                  "packet_generator/clk",
+                  "receiver/clk"
+                ]
+              },
+              "control_1": {
+                "ports": [
+                  "pg_control",
+                  "packet_generator/control"
+                ]
+              },
+              "packet_gen_0_resetn_fifo": {
+                "ports": [
+                  "packet_generator/resetn_fifo",
+                  "axis_data_fifo/s_axis_aresetn"
+                ]
+              },
+              "packet_generator_status": {
+                "ports": [
+                  "packet_generator/status",
+                  "pg_status"
+                ]
+              },
+              "receiver_status": {
+                "ports": [
+                  "receiver/status",
+                  "pr_status"
+                ]
+              },
+              "resetn_1": {
+                "ports": [
+                  "resetn",
+                  "packet_generator/resetn",
+                  "receiver/resetn"
+                ]
+              }
+            }
+          },
+          "channel_2": {
+            "interface_ports": {
+              "AXIS_OUT": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+              },
+              "AXIS_IN": {
+                "mode": "Slave",
+                "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                "vlnv": "xilinx.com:interface:axis_rtl:1.0"
+              }
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "resetn": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "PACKET_COUNT": {
+                "direction": "I",
+                "left": "63",
+                "right": "0"
+              },
+              "CYCLES_PER_PACKET": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "pg_control": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "pg_status": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "pr_status": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              }
+            },
+            "components": {
+              "axis_data_fifo": {
+                "vlnv": "xilinx.com:ip:axis_data_fifo:2.0",
+                "xci_name": "design_1_axis_data_fifo_1",
+                "xci_path": "ip/design_1_axis_data_fifo_1/design_1_axis_data_fifo_1.xci",
+                "inst_hier_path": "cabletest/channel_2/axis_data_fifo"
               },
               "packet_generator": {
                 "vlnv": "xilinx.com:module_ref:packet_gen:1.0",
@@ -2052,20 +1814,228 @@
                     "left": "63",
                     "right": "0"
                   },
-                  "start": {
-                    "direction": "I"
+                  "control": {
+                    "direction": "I",
+                    "left": "2",
+                    "right": "0"
                   },
-                  "sim_err": {
-                    "direction": "I"
-                  },
-                  "busy": {
-                    "direction": "O"
-                  },
-                  "packet_sent": {
-                    "direction": "O"
+                  "status": {
+                    "direction": "O",
+                    "left": "2",
+                    "right": "0"
                   },
                   "resetn_fifo": {
                     "direction": "O"
+                  }
+                }
+              },
+              "receiver": {
+                "vlnv": "xilinx.com:module_ref:receiver:1.0",
+                "xci_name": "design_1_receiver_1",
+                "xci_path": "ip/design_1_receiver_1/design_1_receiver_1.xci",
+                "inst_hier_path": "cabletest/channel_2/receiver",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "receiver",
+                  "boundary_crc": "0x0"
+                },
+                "interface_ports": {
+                  "AXIS_FIFO": {
+                    "mode": "Slave",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "64",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "1",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "1",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "1",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "50000000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "0.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "/system_clock_clk_out1",
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "AXIS_FIFO_TDATA",
+                        "direction": "I",
+                        "left": "511",
+                        "right": "0"
+                      },
+                      "TKEEP": {
+                        "physical_name": "AXIS_FIFO_TKEEP",
+                        "direction": "I",
+                        "left": "63",
+                        "right": "0"
+                      },
+                      "TLAST": {
+                        "physical_name": "AXIS_FIFO_TLAST",
+                        "direction": "I"
+                      },
+                      "TVALID": {
+                        "physical_name": "AXIS_FIFO_TVALID",
+                        "direction": "I"
+                      },
+                      "TREADY": {
+                        "physical_name": "AXIS_FIFO_TREADY",
+                        "direction": "O"
+                      }
+                    }
+                  },
+                  "AXIS_IN": {
+                    "mode": "Slave",
+                    "vlnv_bus_definition": "xilinx.com:interface:axis:1.0",
+                    "vlnv": "xilinx.com:interface:axis_rtl:1.0",
+                    "parameters": {
+                      "TDATA_NUM_BYTES": {
+                        "value": "64",
+                        "value_src": "constant"
+                      },
+                      "TDEST_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TID_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "TUSER_WIDTH": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TREADY": {
+                        "value": "1",
+                        "value_src": "constant"
+                      },
+                      "HAS_TSTRB": {
+                        "value": "0",
+                        "value_src": "constant"
+                      },
+                      "HAS_TKEEP": {
+                        "value": "1",
+                        "value_src": "constant"
+                      },
+                      "HAS_TLAST": {
+                        "value": "1",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "50000000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "0.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "/system_clock_clk_out1",
+                        "value_src": "ip_prop"
+                      }
+                    },
+                    "port_maps": {
+                      "TDATA": {
+                        "physical_name": "AXIS_IN_TDATA",
+                        "direction": "I",
+                        "left": "511",
+                        "right": "0"
+                      },
+                      "TKEEP": {
+                        "physical_name": "AXIS_IN_TKEEP",
+                        "direction": "I",
+                        "left": "63",
+                        "right": "0"
+                      },
+                      "TLAST": {
+                        "physical_name": "AXIS_IN_TLAST",
+                        "direction": "I"
+                      },
+                      "TVALID": {
+                        "physical_name": "AXIS_IN_TVALID",
+                        "direction": "I"
+                      },
+                      "TREADY": {
+                        "physical_name": "AXIS_IN_TREADY",
+                        "direction": "O"
+                      }
+                    }
+                  }
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I",
+                    "parameters": {
+                      "ASSOCIATED_BUSIF": {
+                        "value": "AXIS_FIFO:AXIS_IN",
+                        "value_src": "constant"
+                      },
+                      "ASSOCIATED_RESET": {
+                        "value": "resetn",
+                        "value_src": "constant"
+                      },
+                      "FREQ_HZ": {
+                        "value": "50000000",
+                        "value_src": "ip_prop"
+                      },
+                      "PHASE": {
+                        "value": "0.0",
+                        "value_src": "ip_prop"
+                      },
+                      "CLK_DOMAIN": {
+                        "value": "/system_clock_clk_out1",
+                        "value_src": "ip_prop"
+                      }
+                    }
+                  },
+                  "resetn": {
+                    "type": "rst",
+                    "direction": "I",
+                    "parameters": {
+                      "POLARITY": {
+                        "value": "ACTIVE_LOW",
+                        "value_src": "constant"
+                      }
+                    }
+                  },
+                  "status": {
+                    "direction": "O",
+                    "left": "1",
+                    "right": "0"
                   }
                 }
               }
@@ -2113,20 +2083,14 @@
                 "ports": [
                   "clk",
                   "axis_data_fifo/s_axis_aclk",
-                  "receiver/clk",
-                  "packet_generator/clk"
+                  "packet_generator/clk",
+                  "receiver/clk"
                 ]
               },
-              "packet_gen_0_busy": {
+              "control_1": {
                 "ports": [
-                  "packet_generator/busy",
-                  "busy"
-                ]
-              },
-              "packet_gen_0_packet_sent": {
-                "ports": [
-                  "packet_generator/packet_sent",
-                  "packet_sent"
+                  "pg_control",
+                  "packet_generator/control"
                 ]
               },
               "packet_gen_0_resetn_fifo": {
@@ -2135,35 +2099,23 @@
                   "axis_data_fifo/s_axis_aresetn"
                 ]
               },
-              "receiver_0_error": {
+              "packet_generator_status": {
                 "ports": [
-                  "receiver/error",
-                  "error"
+                  "packet_generator/status",
+                  "pg_status"
                 ]
               },
-              "receiver_0_packet_rcvd": {
+              "receiver_status": {
                 "ports": [
-                  "receiver/packet_rcvd",
-                  "packet_rcvd"
+                  "receiver/status",
+                  "pr_status"
                 ]
               },
               "resetn_1": {
                 "ports": [
                   "resetn",
-                  "receiver/resetn",
-                  "packet_generator/resetn"
-                ]
-              },
-              "sim_err_1": {
-                "ports": [
-                  "sim_err",
-                  "packet_generator/sim_err"
-                ]
-              },
-              "start_1": {
-                "ports": [
-                  "start",
-                  "packet_generator/start"
+                  "packet_generator/resetn",
+                  "receiver/resetn"
                 ]
               }
             }
@@ -2432,38 +2384,35 @@
                   }
                 }
               },
-              "start": {
-                "direction": "O"
+              "pg_control_1": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
               },
-              "sim_err1": {
-                "direction": "O"
+              "pg_control_2": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
               },
-              "sim_err2": {
-                "direction": "O"
+              "pg_status_1": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
               },
-              "busy1": {
-                "direction": "I"
+              "pg_status_2": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
               },
-              "busy2": {
-                "direction": "I"
+              "pr_status_1": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
               },
-              "sent1": {
-                "direction": "I"
-              },
-              "sent2": {
-                "direction": "I"
-              },
-              "rcvd1": {
-                "direction": "I"
-              },
-              "rcvd2": {
-                "direction": "I"
-              },
-              "err1": {
-                "direction": "I"
-              },
-              "err2": {
-                "direction": "I"
+              "pr_status_2": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
               },
               "CYCLES_PER_PACKET": {
                 "direction": "O",
@@ -2525,41 +2474,40 @@
               "channel_2/PACKET_COUNT"
             ]
           },
-          "cabletest_ctl_sim_err1": {
+          "cabletest_ctl_pg_control_1": {
             "ports": [
-              "cabletest_ctl/sim_err1",
-              "channel_1/sim_err"
+              "cabletest_ctl/pg_control_1",
+              "channel_1/pg_control"
             ]
           },
-          "cabletest_ctl_start": {
+          "cabletest_ctl_pg_control_2": {
             "ports": [
-              "cabletest_ctl/start",
-              "channel_1/start",
-              "channel_2/start"
+              "cabletest_ctl/pg_control_2",
+              "channel_2/pg_control"
             ]
           },
-          "channel_2_busy": {
+          "channel_1_status": {
             "ports": [
-              "channel_2/busy",
-              "cabletest_ctl/busy2"
+              "channel_1/pg_status",
+              "cabletest_ctl/pg_status_1"
             ]
           },
-          "channel_2_error": {
+          "channel_1_status1": {
             "ports": [
-              "channel_2/error",
-              "cabletest_ctl/err2"
+              "channel_1/pr_status",
+              "cabletest_ctl/pr_status_1"
             ]
           },
-          "channel_2_packet_rcvd": {
+          "channel_2_status": {
             "ports": [
-              "channel_2/packet_rcvd",
-              "cabletest_ctl/rcvd2"
+              "channel_2/pg_status",
+              "cabletest_ctl/pg_status_2"
             ]
           },
-          "channel_2_packet_sent": {
+          "channel_2_status1": {
             "ports": [
-              "channel_2/packet_sent",
-              "cabletest_ctl/sent2"
+              "channel_2/pr_status",
+              "cabletest_ctl/pr_status_2"
             ]
           },
           "clk_1": {
@@ -2570,42 +2518,12 @@
               "cabletest_ctl/clk"
             ]
           },
-          "hier_0_busy": {
-            "ports": [
-              "channel_1/busy",
-              "cabletest_ctl/busy1"
-            ]
-          },
-          "hier_0_error": {
-            "ports": [
-              "channel_1/error",
-              "cabletest_ctl/err1"
-            ]
-          },
-          "hier_0_packet_rcvd": {
-            "ports": [
-              "channel_1/packet_rcvd",
-              "cabletest_ctl/rcvd1"
-            ]
-          },
-          "hier_0_packet_sent": {
-            "ports": [
-              "channel_1/packet_sent",
-              "cabletest_ctl/sent1"
-            ]
-          },
           "resetn_1": {
             "ports": [
               "resetn",
               "channel_1/resetn",
               "channel_2/resetn",
               "cabletest_ctl/resetn"
-            ]
-          },
-          "sim_err_1": {
-            "ports": [
-              "cabletest_ctl/sim_err2",
-              "channel_2/sim_err"
             ]
           }
         }
