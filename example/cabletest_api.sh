@@ -5,10 +5,21 @@
 #==============================================================================
 CABLETEST_API_VERSION=1.00
 
+
+#==============================================================================
+# This calls the local copy of pcireg
+#==============================================================================
+pcireg()
+{
+    ./pcireg $1 $2 $3 $4 $5 $6
+}
+#==============================================================================
+
 #==============================================================================
 # AXI register definitions
 #==============================================================================
 CABLETEST_BASE=0x1000
+
 
        REG_MODULE_REV=$((CABLETEST_BASE +  0*4))
            REG_STATUS=$((CABLETEST_BASE +  1*4))
@@ -26,7 +37,7 @@ REG_CYCLES_PER_PACKET=$((CABLETEST_BASE +  2*4))
           REG_ERRORS1=$((CABLETEST_BASE + 13*4))
           REG_ERRORS2=$((CABLETEST_BASE + 14*4))
          REG_SIMERROR=$((CABLETEST_BASE + 15*4))
-
+       REG_ETH_STATUS=0x500
 
 #==============================================================================
 # This strips underscores from a string and converts it to decimal
@@ -58,16 +69,6 @@ lower32()
 {
     local value=$(strip_underscores $1)
     echo $((value & 0xFFFFFFFF))
-}
-#==============================================================================
-
-
-#==============================================================================
-# This calls the local copy of pcireg
-#==============================================================================
-pcireg()
-{
-    axireg $1 $2 $3 $4 $5 $6
 }
 #==============================================================================
 
@@ -180,18 +181,64 @@ get_packet_count()
 
 #==============================================================================
 # Displays the number of packets received
+#
+# $1 should be 1, 2, or blank
 #==============================================================================
 get_packets_rcvd()
 {
+    local rcvd1=$(read_reg64 $REG_PACKETS_RCVD1H)
+    local rcvd2=$(read_reg64 $REG_PACKETS_RCVD2H)
+
     if [ "$1" == "1" ]; then
-        read_reg64 $REG_PACKETS_RCVD1H 
+        echo $rcvd1
     elif [ "$1" == "2" ]; then
-        read_reg64 $REG_PACKETS_RCVD2H
+        echo $rcvd2
     else
-        echo "Bad parameter [$1] on get_packet_rcvd()" 1>&2
-        echo "0"
+        test $rcvd1 -lt $rcvd2 && echo $rcvd1 || echo $rcvd2
+    fi
+}
+#==============================================================================
+
+
+#==============================================================================
+# Displays the number of cycles per packet
+#==============================================================================
+get_cycles_per_packet()
+{
+    read_reg $REG_CYCLES_PER_PACKET
+}
+#==============================================================================
+
+
+#==============================================================================
+# Sets the number of cycles per packet
+#
+# $1 should be in the range of 1 thru 129.
+#==============================================================================
+set_cycles_per_packet()
+{
+    local cycles=$1
+
+    # Ensure that the caller gave us a parameter
+    if [ "$cycles" == "" ]; then
+        echo "Missing parameter on set_cycles_per_packet()" 1>&2
+        return
+    fi    
+
+    # Ensure that the user is trying to set a valid value    
+    if [ $cycles -lt 1 ] || [ $cycles -gt 129 ]; then
+        echo "Invalid cycle count on set_cycles_per_packet()" 1>&2
         return
     fi
+
+    # Is the packet-generator already busy?
+    if [ $(is_busy) -ne 0 ]; then
+        echo "Packet generator is busy" 1>&2
+        return
+    fi
+
+    # The packet generator isn't busy: store the cycle count
+    pcireg $REG_CYCLES_PER_PACKET $cycles
 }
 #==============================================================================
 
@@ -222,6 +269,38 @@ sim_error()
     pcireg $REG_SIMERROR $1    
 }
 #==============================================================================
+
+
+#==============================================================================
+# Displays the PCS-lock status of an Ethernet port
+#
+# $1 = 0, 1 or blank (blank = both)
+#
+# Displays "1" if the selected Ethernet port has PCS-lock, else displays 0
+#==============================================================================
+get_pcs_status()
+{
+    local eth0_pcs_lock=0
+    local eth1_pcs_lock=0
+
+    # Fetch the ethernet status bits
+    local status=$(read_reg $REG_ETH_STATUS)
+
+    # Fetch the PCS lock status of the two ports
+    test $((status & 0x00001)) -ne 0 && eth0_pcs_lock=1
+    test $((status & 0x10000)) -ne 0 && eth1_pcs_lock=1
+
+    # Display the requested status
+    if [ "$1" == "0" ]; then
+        echo $eth0_pcs_lock
+    elif [ "$1" == "1" ]; then
+        echo $eth1_pcs_lock
+    else
+        echo $((eth0_pcs_lock & eth1_pcs_lock))
+    fi
+}
+#==============================================================================
+
 
 
 

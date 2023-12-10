@@ -21,7 +21,7 @@ preplace portBus PACKET_COUNT -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
 preplace portBus CYCLES_PER_PACKET -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
 preplace inst axis_data_fifo -pg 1 -lvl 2 -x 530 -y 140 -defaultsOSRD -pinDir S_AXIS left -pinY S_AXIS 0L -pinDir M_AXIS left -pinY M_AXIS 160L -pinDir s_axis_aresetn left -pinY s_axis_aresetn 180L -pinDir s_axis_aclk left -pinY s_axis_aclk 200L
 preplace inst receiver -pg 1 -lvl 1 -x 220 -y 300 -defaultsOSRD -pinDir AXIS_FIFO right -pinY AXIS_FIFO 0R -pinDir AXIS_IN left -pinY AXIS_IN 0L -pinDir clk left -pinY clk 20L -pinDir resetn left -pinY resetn 40L -pinDir packet_rcvd right -pinY packet_rcvd 100R -pinDir error right -pinY error 120R
-preplace inst packet_generator -pg 1 -lvl 1 -x 220 -y 60 -swap {6 1 2 3 4 5 0 7 8 9 10 11 12 17 13 14 16 15 19 18 20} -defaultsOSRD -pinDir AXIS_FIFO right -pinY AXIS_FIFO 80R -pinDir AXIS_OUT right -pinY AXIS_OUT 0R -pinDir clk left -pinY clk 40L -pinDir resetn left -pinY resetn 140L -pinBusDir CYCLES_PER_PACKET left -pinBusY CYCLES_PER_PACKET 60L -pinBusDir PACKET_COUNT left -pinBusY PACKET_COUNT 80L -pinDir start left -pinY start 120L -pinDir sim_err left -pinY sim_err 100L -pinDir busy right -pinY busy 120R -pinDir packet_sent right -pinY packet_sent 100R -pinDir resetn_fifo right -pinY resetn_fifo 140R
+preplace inst packet_generator -pg 1 -lvl 1 -x 220 -y 60 -swap {4 1 2 3 0 5 6 7 8 9 10 15 11 12 14 13 17 16 18} -defaultsOSRD -pinDir AXIS_FIFO right -pinY AXIS_FIFO 80R -pinDir AXIS_OUT right -pinY AXIS_OUT 0R -pinDir clk left -pinY clk 40L -pinDir resetn left -pinY resetn 140L -pinBusDir CYCLES_PER_PACKET left -pinBusY CYCLES_PER_PACKET 60L -pinBusDir PACKET_COUNT left -pinBusY PACKET_COUNT 80L -pinDir start left -pinY start 120L -pinDir sim_err left -pinY sim_err 100L -pinDir busy right -pinY busy 120R -pinDir packet_sent right -pinY packet_sent 100R -pinDir resetn_fifo right -pinY resetn_fifo 140R
 preplace netloc CYCLES_PER_PACKET_1 1 0 1 NJ 120
 preplace netloc PACKET_COUNT_1 1 0 1 NJ 140
 preplace netloc clk_1 1 0 2 40 480 420
@@ -41,7 +41,7 @@ levelinfo -pg 1 0 220 530 660 700
 pagesize -pg 1 -db -bbox -sgen -240 0 840 490
 ",
    "No Loops_ScaleFactor":"1.0",
-   "No Loops_TopLeft":"-434,-155",
+   "No Loops_TopLeft":"-434,-140",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
 preplace port AXIS_OUT1 -pg 1 -lvl 3 -x 670 -y 160 -defaultsOSRD

@@ -42,15 +42,13 @@ module packet_gen
     //                   The FIFO output stream
     //==================================================================
     output[511:0] AXIS_FIFO_TDATA,
-    output[ 63:0] AXIS_FIFO_TKEEP,
-    output        AXIS_FIFO_TLAST,
     output        AXIS_FIFO_TVALID,
     input         AXIS_FIFO_TREADY
     //==================================================================    
 
 );
 
-reg[  3:0] fsm_state;
+
 reg[ 63:0] packets_sent;
 reg[  7:0] cycle_number;
 reg        sim_err_latched;
@@ -62,6 +60,11 @@ random u_random(clk, resetn, random);
 // This is a single bit on at a random location in a 512 bit field
 wire[511:0] single_bit_error = {511'b0, sim_err_latched} << random[8:0];
 
+// This is high on any clock cycle where a data transfer occurs on the output stream
+wire handshake = AXIS_OUT_TVALID & AXIS_OUT_TREADY;
+
+// The possible states of our state machine
+reg[  1:0] fsm_state;
 localparam FSM_WAIT_FOR_START = 0;
 localparam FSM_RESET_FIFO1    = 1;
 localparam FSM_RESET_FIFO2    = 2;
@@ -81,15 +84,13 @@ assign AXIS_OUT_TLAST = (fsm_state == FSM_GENERATE) & (cycle_number == CYCLES_PE
 
 // The FIFO output stream is data-driven from the random-number-generator
 assign AXIS_FIFO_TDATA  = random;
-assign AXIS_FIFO_TKEEP  = AXIS_OUT_TKEEP;
-assign AXIS_FIFO_TLAST  = AXIS_OUT_TLAST;
-assign AXIS_FIFO_TVALID = AXIS_OUT_TVALID;
+assign AXIS_FIFO_TVALID = handshake;
 
 // We're busy any time we're generating packets
 assign busy = (start || fsm_state != FSM_WAIT_FOR_START);
 
 // Strobe "packet_sent" on the last cycle of every packet
-assign packet_sent = (AXIS_OUT_TVALID & AXIS_OUT_TREADY & AXIS_OUT_TLAST);
+assign packet_sent = (handshake & AXIS_OUT_TLAST);
 
 //==================================================================
 // This state machine drives data-packets out both the AXIS_OUT
@@ -129,7 +130,7 @@ always @(posedge clk) begin
             end
 
         FSM_GENERATE:
-            if (AXIS_OUT_TVALID & AXIS_OUT_TREADY) begin
+            if (handshake) begin
                 sim_err_latched <= 0;                
                 cycle_number <= cycle_number + 1;
                 if (AXIS_OUT_TLAST) begin
